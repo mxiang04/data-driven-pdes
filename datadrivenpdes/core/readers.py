@@ -58,7 +58,7 @@ def initialize_dataset(
 
   def parse_function(example_proto):
     """Parsing function that converts example proto to a tuple of states."""
-    parsed_features = tf.io.parse_single_example(example_proto, features)
+    parsed_features = tf.io.parse_single_example(serialized=example_proto, features=features)
     # TODO(dkochkov) Consider switching logic to use parse_example.
     output_states = []
     for state_keys, grid in zip(requested_data_keys, requested_data_grids):

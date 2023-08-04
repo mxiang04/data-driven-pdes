@@ -30,7 +30,7 @@ from absl.testing import absltest
 
 
 # Use eager mode by default
-tf.enable_eager_execution()
+tf.compat.v1.enable_eager_execution()
 
 
 StateDef = states.StateDefinition
@@ -66,7 +66,7 @@ class ConvLayersTest(parameterized.TestCase):
         num_layers=3,
         filters=1,
         kernel_size=1,
-        kernel_initializer=tf.initializers.ones,
+        kernel_initializer=tf.compat.v1.initializers.ones,
         activation=None,
         use_bias=False
         )
@@ -77,7 +77,7 @@ class ConvLayersTest(parameterized.TestCase):
     expected = np.array(expected, dtype=np.float32)[np.newaxis, ..., np.newaxis]
 
     # validate forward pass
-    inputs = {'concentration': tf.convert_to_tensor(inputs)}
+    inputs = {'concentration': tf.convert_to_tensor(value=inputs)}
     outputs = core_model(inputs).numpy()
     np.testing.assert_allclose(outputs, expected, atol=atol)
 
@@ -154,7 +154,7 @@ class FiniteDifferenceModelTest(parameterized.TestCase):
     model = model_cls(equation, grid, **model_kwargs)
 
     inputs = tf.convert_to_tensor(
-        np.random.RandomState(0).random_sample((1,) + grid.shape), tf.float32)
+        value=np.random.RandomState(0).random_sample((1,) + grid.shape), dtype=tf.float32)
 
     # create variables, then reset them all to zero
     model.spatial_derivatives({'c': inputs})
@@ -223,7 +223,7 @@ class FiniteDifferenceModelTest(parameterized.TestCase):
     model = model_cls(equation, grid, **model_kwargs)
 
     inputs = tf.convert_to_tensor(
-        np.random.RandomState(0).random_sample((1,) + grid.shape), tf.float32)
+        value=np.random.RandomState(0).random_sample((1,) + grid.shape), dtype=tf.float32)
 
     # create variables, then reset them all to zero
     model.spatial_derivatives({'c_edge_x': inputs})
@@ -339,7 +339,7 @@ class RotationalInvarianceTest(parameterized.TestCase):
 
     rs = np.random.RandomState(0)
     inputs = {
-        k: tf.convert_to_tensor(rs.random_sample((1,) + grid.shape), tf.float32)
+        k: tf.convert_to_tensor(value=rs.random_sample((1,) + grid.shape), dtype=tf.float32)
         for k in equation.base_keys
     }
     for forward_model in [model.spatial_derivatives, model.time_derivative]:

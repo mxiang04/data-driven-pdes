@@ -25,7 +25,7 @@ import tensorflow as tf
 from absl.testing import absltest
 
 
-tf.enable_eager_execution()
+tf.compat.v1.enable_eager_execution()
 
 # TODO(dkochkov) update initialization and bring back boundary test.
 

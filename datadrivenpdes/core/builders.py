@@ -77,7 +77,7 @@ def unstack_dict(
     num: int,
 ) -> List[Dict[T, tf.Tensor]]:
   """Unstack keyed tensors into a list."""
-  unstacked = tf.contrib.framework.nest.map_structure(
+  unstacked = tf.nest.map_structure(
       lambda x: tf.unstack(x, num), state)
   result = [{} for _ in range(num)]
   for k, tensor_list in unstacked.items():

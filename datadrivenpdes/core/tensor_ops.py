@@ -27,7 +27,7 @@ import tensorflow as tf
 def auto_nest(func):
   """Automatically support nested tensors in the first argument."""
   def wrapper(tensors, *args, **kwargs):
-    return tf.contrib.framework.nest.map_structure(
+    return tf.nest.map_structure(
         lambda x: func(x, *args, **kwargs), tensors)
   return wrapper
 
@@ -185,7 +185,7 @@ def extract_patches_2d(
   padded = pad_periodic(tensor, paddings)
 
   size_x, size_y = kernel_size
-  extracted = tf.extract_image_patches(padded[..., tf.newaxis],
+  extracted = tf.image.extract_patches(padded[..., tf.newaxis],
                                        [1, size_x, size_y, 1],
                                        strides=[1, 1, 1, 1],
                                        rates=[1, 1, 1, 1],
@@ -226,7 +226,7 @@ def regrid_mean(
     # TODO(shoyer): support this with roll()
     raise NotImplementedError('offset not supported yet')
 
-  tensor = tf.convert_to_tensor(tensor)
+  tensor = tf.convert_to_tensor(value=tensor)
   shape = tensor.shape.as_list()
   axis = _normalize_axis(axis, len(shape))
   multiple, residual = divmod(shape[axis], factor)
@@ -237,7 +237,7 @@ def regrid_mean(
   new_shape = shape[:axis] + [multiple, factor] + shape[axis+1:]
   new_shape = [-1 if size is None else size for size in new_shape]
 
-  return tf.reduce_mean(tf.reshape(tensor, new_shape), axis=axis+1)
+  return tf.reduce_mean(input_tensor=tf.reshape(tensor, new_shape), axis=axis+1)
 
 
 def regrid_subsample(
@@ -259,7 +259,7 @@ def regrid_subsample(
   Raises:
     ValueError: if the original axis size is not evenly divided by factor.
   """
-  tensor = tf.convert_to_tensor(tensor)
+  tensor = tf.convert_to_tensor(value=tensor)
   shape = tensor.shape.as_list()
   axis = _normalize_axis(axis, len(shape))
   residual = shape[axis] % factor
@@ -377,8 +377,8 @@ def regrid_masked_mean_2d(
   Returns:
     Averaged tensor.
   """
-  tensor = tf.convert_to_tensor(tensor)
-  mask = tf.convert_to_tensor(mask)
+  tensor = tf.convert_to_tensor(value=tensor)
+  mask = tf.convert_to_tensor(value=mask)
 
   shape = tensor.shape.as_list()
 
@@ -392,8 +392,8 @@ def regrid_masked_mean_2d(
   new_shape = [-1 if size is None else size for size in new_shape]
 
   mask = tf.cast(mask, tensor.dtype)
-  total = tf.reduce_sum(tf.reshape(tensor * mask, new_shape), axis=(-3, -1))
-  count = tf.reduce_sum(tf.reshape(mask, new_shape), axis=(-3, -1))
+  total = tf.reduce_sum(input_tensor=tf.reshape(tensor * mask, new_shape), axis=(-3, -1))
+  count = tf.reduce_sum(input_tensor=tf.reshape(mask, new_shape), axis=(-3, -1))
   return total / tf.maximum(count, 1.0)
 
 
@@ -405,7 +405,7 @@ def moveaxis(tensor: tf.Tensor, source: int, destination: int) -> tf.Tensor:
   destination = _normalize_axis(destination, ndim)
   order = [n for n in range(ndim) if n != source]
   order.insert(destination, source)
-  return tf.transpose(tensor, order)
+  return tf.transpose(a=tensor, perm=order)
 
 
 @auto_nest

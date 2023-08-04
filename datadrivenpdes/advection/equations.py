@@ -448,9 +448,9 @@ class UpwindAdvectionDiffusion(AdvectionDiffusion):
     c_top = tensor_ops.roll_2d(c, (0, -1))
 
     D = self.diffusion_coefficient  # pylint: disable=invalid-name
-    x_flux = (x_velocity * tf.where(x_velocity > 0, c, c_right)
+    x_flux = (x_velocity * tf.compat.v1.where(x_velocity > 0, c, c_right)
               - D * concentration_x_edge_x)
-    y_flux = (y_velocity * tf.where(y_velocity > 0, c, c_top)
+    y_flux = (y_velocity * tf.compat.v1.where(y_velocity > 0, c, c_top)
               - D * concentration_y_edge_y)
     c_t = flux_to_time_derivative(x_flux, y_flux, grid.step)
     return {'concentration': c_t}
@@ -480,8 +480,8 @@ class UpwindAdvection(Advection):
     c_right = tensor_ops.roll_2d(c, (-1, 0))
     c_top = tensor_ops.roll_2d(c, (0, -1))
 
-    x_flux = x_velocity * tf.where(x_velocity > 0, c, c_right)
-    y_flux = y_velocity * tf.where(y_velocity > 0, c, c_top)
+    x_flux = x_velocity * tf.compat.v1.where(x_velocity > 0, c, c_right)
+    y_flux = y_velocity * tf.compat.v1.where(y_velocity > 0, c, c_top)
     c_t = flux_to_time_derivative(x_flux, y_flux, grid.step)
     return {'concentration': c_t}
 
@@ -561,7 +561,7 @@ def _tendency_vanleer_1d(c, v, dx, dt, axis, c_x=None, diffusion_coefficient=0,
   correction = 0.5 - abs(v) * (0.5 * dt / dx)
   flux_minus = v * (c + mismatch * correction)
   flux_plus = v * (c_right - roll_plus_one(mismatch) * correction)
-  flux = tf.where(v >= 0, flux_minus, flux_plus)
+  flux = tf.compat.v1.where(v >= 0, flux_minus, flux_plus)
 
   if diffusion_coefficient:
     if c_x is None:

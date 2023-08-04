@@ -323,8 +323,8 @@ class PolynomialAccuracy(tf.keras.layers.Layer):
 
     self.input_size = input_size
     self.output_size = b.size
-    self.nullspace = tf.convert_to_tensor(nullspace, dtype)
-    self.bias = tf.convert_to_tensor(bias, dtype)
+    self.nullspace = tf.convert_to_tensor(value=nullspace, dtype=dtype)
+    self.bias = tf.convert_to_tensor(value=bias, dtype=dtype)
 
     super().__init__(trainable=False, dtype=dtype)
 
@@ -343,7 +343,7 @@ class PolynomialBias(tf.keras.layers.Layer):
   def __init__(self, *args, **kwargs):
     dtype = kwargs.pop('dtype', np.float32)
     bias = coefficients(*args, **kwargs).ravel()
-    self.bias = tf.convert_to_tensor(bias, dtype)
+    self.bias = tf.convert_to_tensor(value=bias, dtype=dtype)
     self.input_size = bias.size
     super().__init__(trainable=False, dtype=dtype)
 

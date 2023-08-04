@@ -220,7 +220,7 @@ class FiniteDifferenceModel(SpatialDerivativeModel):
         coefficients_2d = polynomials.coefficients(
             stencils, equation.METHOD, key_def.derivative_orders,
             accuracy_order, grid.step)
-        coefficients = tf.convert_to_tensor(coefficients_2d.ravel(), tf.float32)
+        coefficients = tf.convert_to_tensor(value=coefficients_2d.ravel(), dtype=tf.float32)
 
       self.parents[key] = parent
       self.stencils[key] = stencils
@@ -532,8 +532,8 @@ def conv2d_stack(num_outputs, num_layers=5, filters=32, kernel_size=5,
 
 
 def _rescale_01(array, axis):
-  array_max = tf.reduce_max(array, axis, keep_dims=True)
-  array_min = tf.reduce_min(array, axis, keep_dims=True)
+  array_max = tf.reduce_max(input_tensor=array, axis=axis, keepdims=True)
+  array_min = tf.reduce_min(input_tensor=array, axis=axis, keepdims=True)
   return (array - array_min) / (array_max - array_min)
 
 

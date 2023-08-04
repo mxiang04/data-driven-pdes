@@ -34,7 +34,7 @@ from datadrivenpdes.advection import equations as advection_equations
 
 from apache_beam import runners
 # our beam pipeline requires eager mode
-tf.enable_eager_execution()
+tf.compat.v1.enable_eager_execution()
 
 # files
 flags.DEFINE_string(

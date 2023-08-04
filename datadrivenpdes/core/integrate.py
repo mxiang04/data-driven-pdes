@@ -64,7 +64,7 @@ def integrate_steps(
   del initial_time  # unused
 
   state = nest.map_structure(tf.convert_to_tensor, state)
-  steps = tf.convert_to_tensor(steps, dtype=tf.int32)
+  steps = tf.convert_to_tensor(value=steps, dtype=tf.int32)
   constant_state = {k: v for k, v in state.items()
                     if k in model.equation.constant_keys}
   evolving_state = {k: v for k, v in state.items()
@@ -77,8 +77,8 @@ def integrate_steps(
     """Integrate until the next step at which to save results."""
     start, stop = start_stop
     result, _ = tf.while_loop(
-        lambda _, i: i < stop,
-        lambda state, i: (advance_one_step(state), i + 1),
+        cond=lambda _, i: i < stop,
+        body=lambda state, i: (advance_one_step(state), i + 1),
         loop_vars=(evolving_state, start),
     )
     return result

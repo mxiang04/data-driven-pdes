@@ -1,0 +1,354 @@
+TensorFlow 2.0 Upgrade Script
+-----------------------------
+Converted 35 files
+Detected 5 issues that require attention
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+File: .\datadrivenpdes\core\builders.py
+--------------------------------------------------------------------------------
+.\datadrivenpdes\core\builders.py:36:7: ERROR: Using member tf.contrib.framework.nest in deprecated module tf.contrib. tf.contrib.framework.nest cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+--------------------------------------------------------------------------------
+File: .\datadrivenpdes\core\integrate.py
+--------------------------------------------------------------------------------
+.\datadrivenpdes\core\integrate.py:24:7: ERROR: Using member tf.contrib.framework.nest in deprecated module tf.contrib. tf.contrib.framework.nest cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+.\datadrivenpdes\core\integrate.py:25:6: ERROR: Using member tf.contrib.compiler.xla in deprecated module tf.contrib. tf.contrib.compiler.xla cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+--------------------------------------------------------------------------------
+File: .\datadrivenpdes\core\integration_test.py
+--------------------------------------------------------------------------------
+.\datadrivenpdes\core\integration_test.py:31:7: ERROR: Using member tf.contrib.framework.nest in deprecated module tf.contrib. tf.contrib.framework.nest cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+--------------------------------------------------------------------------------
+File: .\datadrivenpdes\core\models.py
+--------------------------------------------------------------------------------
+.\datadrivenpdes\core\models.py:38:7: ERROR: Using member tf.contrib.framework.nest in deprecated module tf.contrib. tf.contrib.framework.nest cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+================================================================================
+Detailed log follows:
+
+================================================================================
+================================================================================
+Input tree: '.'
+================================================================================
+--------------------------------------------------------------------------------
+Processing file '.\\setup.py'
+ outputting to '.\\setup.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\__init__.py'
+ outputting to '.\\datadrivenpdes\\__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\advection\\equations.py'
+ outputting to '.\\datadrivenpdes\\advection\\equations.py'
+--------------------------------------------------------------------------------
+
+451:27: INFO: Renamed 'tf.where' to 'tf.compat.v1.where'
+453:27: INFO: Renamed 'tf.where' to 'tf.compat.v1.where'
+483:26: INFO: Renamed 'tf.where' to 'tf.compat.v1.where'
+484:26: INFO: Renamed 'tf.where' to 'tf.compat.v1.where'
+564:9: INFO: Renamed 'tf.where' to 'tf.compat.v1.where'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\advection\\equations_test.py'
+ outputting to '.\\datadrivenpdes\\advection\\equations_test.py'
+--------------------------------------------------------------------------------
+
+28:0: INFO: Renamed 'tf.enable_eager_execution' to 'tf.compat.v1.enable_eager_execution'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\advection\\velocity_fields.py'
+ outputting to '.\\datadrivenpdes\\advection\\velocity_fields.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\advection\\velocity_fields_test.py'
+ outputting to '.\\datadrivenpdes\\advection\\velocity_fields_test.py'
+--------------------------------------------------------------------------------
+
+26:0: INFO: Renamed 'tf.enable_eager_execution' to 'tf.compat.v1.enable_eager_execution'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\advection\\__init__.py'
+ outputting to '.\\datadrivenpdes\\advection\\__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\builders.py'
+ outputting to '.\\datadrivenpdes\\core\\builders.py'
+--------------------------------------------------------------------------------
+
+36:7: ERROR: Using member tf.contrib.framework.nest in deprecated module tf.contrib. tf.contrib.framework.nest cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+80:14: INFO: Renamed 'tf.contrib.framework.nest.map_structure' to 'tf.nest.map_structure'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\builders_test.py'
+ outputting to '.\\datadrivenpdes\\core\\builders_test.py'
+--------------------------------------------------------------------------------
+
+22:0: INFO: Renamed 'tf.enable_eager_execution' to 'tf.compat.v1.enable_eager_execution'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\equations.py'
+ outputting to '.\\datadrivenpdes\\core\\equations.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\geometry.py'
+ outputting to '.\\datadrivenpdes\\core\\geometry.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\geometry_test.py'
+ outputting to '.\\datadrivenpdes\\core\\geometry_test.py'
+--------------------------------------------------------------------------------
+
+26:0: INFO: Renamed 'tf.enable_eager_execution' to 'tf.compat.v1.enable_eager_execution'
+48:11: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+75:26: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+92:13: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+93:15: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+94:15: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+109:15: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+120:15: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+121:17: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\grids.py'
+ outputting to '.\\datadrivenpdes\\core\\grids.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\grids_test.py'
+ outputting to '.\\datadrivenpdes\\core\\grids_test.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\integrate.py'
+ outputting to '.\\datadrivenpdes\\core\\integrate.py'
+--------------------------------------------------------------------------------
+
+24:7: ERROR: Using member tf.contrib.framework.nest in deprecated module tf.contrib. tf.contrib.framework.nest cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+25:6: ERROR: Using member tf.contrib.compiler.xla in deprecated module tf.contrib. tf.contrib.compiler.xla cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+67:10: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+79:16: INFO: Added keywords to args of function 'tf.while_loop'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\integrate_test.py'
+ outputting to '.\\datadrivenpdes\\core\\integrate_test.py'
+--------------------------------------------------------------------------------
+
+27:0: INFO: Renamed 'tf.enable_eager_execution' to 'tf.compat.v1.enable_eager_execution'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\integration_test.py'
+ outputting to '.\\datadrivenpdes\\core\\integration_test.py'
+--------------------------------------------------------------------------------
+
+31:7: ERROR: Using member tf.contrib.framework.nest in deprecated module tf.contrib. tf.contrib.framework.nest cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+35:0: INFO: Renamed 'tf.enable_eager_execution' to 'tf.compat.v1.enable_eager_execution'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\models.py'
+ outputting to '.\\datadrivenpdes\\core\\models.py'
+--------------------------------------------------------------------------------
+
+38:7: ERROR: Using member tf.contrib.framework.nest in deprecated module tf.contrib. tf.contrib.framework.nest cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+223:23: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+535:14: INFO: Added keywords to args of function 'tf.reduce_max'
+535:14: INFO: Renamed keyword argument for tf.reduce_max from keep_dims to keepdims
+536:14: INFO: Added keywords to args of function 'tf.reduce_min'
+536:14: INFO: Renamed keyword argument for tf.reduce_min from keep_dims to keepdims
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\models_test.py'
+ outputting to '.\\datadrivenpdes\\core\\models_test.py'
+--------------------------------------------------------------------------------
+
+33:0: INFO: Renamed 'tf.enable_eager_execution' to 'tf.compat.v1.enable_eager_execution'
+69:27: INFO: tf.initializers.ones requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+69:27: INFO: Renamed 'tf.initializers.ones' to 'tf.compat.v1.initializers.ones'
+80:31: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+156:13: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+225:13: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+342:11: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\polynomials.py'
+ outputting to '.\\datadrivenpdes\\core\\polynomials.py'
+--------------------------------------------------------------------------------
+
+326:21: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+327:16: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+346:16: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\polynomials_test.py'
+ outputting to '.\\datadrivenpdes\\core\\polynomials_test.py'
+--------------------------------------------------------------------------------
+
+25:0: INFO: Renamed 'tf.enable_eager_execution' to 'tf.compat.v1.enable_eager_execution'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\readers.py'
+ outputting to '.\\datadrivenpdes\\core\\readers.py'
+--------------------------------------------------------------------------------
+
+61:22: INFO: Added keywords to args of function 'tf.io.parse_single_example'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\readers_test.py'
+ outputting to '.\\datadrivenpdes\\core\\readers_test.py'
+--------------------------------------------------------------------------------
+
+33:0: INFO: Renamed 'tf.enable_eager_execution' to 'tf.compat.v1.enable_eager_execution'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\states.py'
+ outputting to '.\\datadrivenpdes\\core\\states.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\states_test.py'
+ outputting to '.\\datadrivenpdes\\core\\states_test.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\tensor_ops.py'
+ outputting to '.\\datadrivenpdes\\core\\tensor_ops.py'
+--------------------------------------------------------------------------------
+
+30:11: INFO: Renamed 'tf.contrib.framework.nest.map_structure' to 'tf.nest.map_structure'
+188:14: INFO: Renamed 'tf.extract_image_patches' to 'tf.image.extract_patches'
+229:11: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+240:9: INFO: Added keywords to args of function 'tf.reduce_mean'
+262:11: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+380:11: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+381:9: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+395:10: INFO: Added keywords to args of function 'tf.reduce_sum'
+396:10: INFO: Added keywords to args of function 'tf.reduce_sum'
+408:9: INFO: Added keywords to args of function 'tf.transpose'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\tensor_ops_test.py'
+ outputting to '.\\datadrivenpdes\\core\\tensor_ops_test.py'
+--------------------------------------------------------------------------------
+
+27:0: INFO: Renamed 'tf.enable_eager_execution' to 'tf.compat.v1.enable_eager_execution'
+42:18: INFO: Renamed 'tf.random_uniform' to 'tf.random.uniform'
+43:19: INFO: Renamed 'tf.random_uniform' to 'tf.random.uniform'
+86:13: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+108:13: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+110:11: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\utils.py'
+ outputting to '.\\datadrivenpdes\\core\\utils.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\utils_test.py'
+ outputting to '.\\datadrivenpdes\\core\\utils_test.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\core\\__init__.py'
+ outputting to '.\\datadrivenpdes\\core\\__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\pipelines\\beamlib.py'
+ outputting to '.\\datadrivenpdes\\pipelines\\beamlib.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\pipelines\\create_training_data.py'
+ outputting to '.\\datadrivenpdes\\pipelines\\create_training_data.py'
+--------------------------------------------------------------------------------
+
+37:0: INFO: Renamed 'tf.enable_eager_execution' to 'tf.compat.v1.enable_eager_execution'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\pipelines\\create_training_data_test.py'
+ outputting to '.\\datadrivenpdes\\pipelines\\create_training_data_test.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\pipelines\\model_utils.py'
+ outputting to '.\\datadrivenpdes\\pipelines\\model_utils.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '.\\datadrivenpdes\\pipelines\\__init__.py'
+ outputting to '.\\datadrivenpdes\\pipelines\\__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+

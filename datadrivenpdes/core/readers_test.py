@@ -30,7 +30,7 @@ from absl.testing import absltest
 
 
 # dataset writing needs to be happen in eager mode
-tf.enable_eager_execution()
+tf.compat.v1.enable_eager_execution()
 
 FLAGS = flags.FLAGS
 

@@ -32,7 +32,7 @@ nest = tf.contrib.framework.nest
 
 
 # Use eager mode by default
-tf.enable_eager_execution()
+tf.compat.v1.enable_eager_execution()
 
 
 class IntegrationTest(parameterized.TestCase):

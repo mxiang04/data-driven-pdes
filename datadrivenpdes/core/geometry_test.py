@@ -23,7 +23,7 @@ import tensorflow as tf
 from absl.testing import absltest
 
 # tests assume eager execution
-tf.enable_eager_execution()
+tf.compat.v1.enable_eager_execution()
 
 
 X = states.Dimension.X
@@ -45,7 +45,7 @@ class GeometryTest(absltest.TestCase):
     self.assertEqual(repr(transform), '<Reflection [X]>')
 
     inputs = {
-        k: tf.convert_to_tensor(np.array([[0, 1, 2, 3]]).T)
+        k: tf.convert_to_tensor(value=np.array([[0, 1, 2, 3]]).T)
         for k in definitions
     }
     result = transform.forward(inputs)
@@ -72,7 +72,7 @@ class GeometryTest(absltest.TestCase):
     transform = geometry.Permutation(definitions)
 
     rs = np.random.RandomState(0)
-    inputs = {'q_edge_x': tf.convert_to_tensor(rs.randn(5, 5))}
+    inputs = {'q_edge_x': tf.convert_to_tensor(value=rs.randn(5, 5))}
     result = transform.forward(inputs)
     self.assertEqual(set(result), {'q_edge_y'})
     np.testing.assert_array_equal(
@@ -89,9 +89,9 @@ class GeometryTest(absltest.TestCase):
 
     rs = np.random.RandomState(0)
     state = {
-        'q': tf.convert_to_tensor(rs.randn(5, 5)),
-        'q_x': tf.convert_to_tensor(rs.randn(5, 5)),
-        'q_y': tf.convert_to_tensor(rs.randn(5, 5)),
+        'q': tf.convert_to_tensor(value=rs.randn(5, 5)),
+        'q_x': tf.convert_to_tensor(value=rs.randn(5, 5)),
+        'q_y': tf.convert_to_tensor(value=rs.randn(5, 5)),
     }
     for transform in transforms:
       with self.subTest(transform):
@@ -106,7 +106,7 @@ class GeometryTest(absltest.TestCase):
     with self.subTest('uniqueness'):
       rs = np.random.RandomState(0)
       state = {
-          'q': tf.convert_to_tensor(rs.randn(5, 5)),
+          'q': tf.convert_to_tensor(value=rs.randn(5, 5)),
       }
       results_set = {
           tuple(transform.forward(state)['q'].numpy().ravel().tolist())
@@ -117,8 +117,8 @@ class GeometryTest(absltest.TestCase):
     with self.subTest('permutation_counts'):
       rs = np.random.RandomState(0)
       state = {
-          'q': tf.convert_to_tensor(rs.randn(5, 5)),
-          'q_x': tf.convert_to_tensor(rs.randn(5, 5)),
+          'q': tf.convert_to_tensor(value=rs.randn(5, 5)),
+          'q_x': tf.convert_to_tensor(value=rs.randn(5, 5)),
       }
       counts = collections.defaultdict(int)
       for transform in transforms:
